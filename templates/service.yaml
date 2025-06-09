@@ -12,8 +12,9 @@ spec:
     selector: {{ include  "templating-deep-dive.selectorLabels" $ | nindent 6 }}
     ports:
         - protocol: TCP
-          port: {{ .port }}
+          port: {{ include "templating-deep-dive.validators.portRange" .port }}
           targetPort: {{ $.Values.containerPort.http }}
+          ## value of . is {{ . }}
 {{- end }}
 
 

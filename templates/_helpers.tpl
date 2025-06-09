@@ -11,3 +11,12 @@
 app: {{ .Chart.Name }}
 release: {{ .Release.Name }}
 {{- end -}}
+
+{{/*Expects a port to be passed as context*/}}
+{{- define  "templating-deep-dive.validators.portRange" -}}
+{{- $sanitizedPort := int . -}}
+{{- if or (lt $sanitizedPort 1) (gt $sanitizedPort 65535) -}}
+{{- fail "Error: ports must always be between 1 and 65535" -}}
+{{- end -}}
+{{- . -}}
+{{- end -}}
