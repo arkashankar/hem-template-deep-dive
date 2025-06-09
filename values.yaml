@@ -14,7 +14,7 @@ image:
 SecurityContext:
   enabled: true
   runAsUser: 1000
-  #fsGroup: 300
+  fsGroup: 300
 
 
 ## Container-port we are adding http for port 80
