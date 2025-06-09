@@ -18,8 +18,8 @@ spec:
                   ## Value of . : {{ . }}
                   {{- if and (hasKey . "enabled") .enabled }}
                   securityContext:
-                    runAsUser: {{ .runAsUser}}
-                    fsGroup: {{ .fsGroup}}
+                    runAsUser: {{ required ".runAsuser is required other-wise this will fail" .runAsUser}}
+                    fsGroup: {{ required ".fsGroup is required other-wise it will fail" .fsGroup}}
                   {{- end}}
                   {{- end}}
                   {{- if .Values.services | default dict | len }}
