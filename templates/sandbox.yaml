@@ -1,0 +1,7 @@
+{{- if .Values.sandbox.enabled -}}
+list:
+    values:
+        example: {{ list 1 2 3 4 | toYaml | nindent 8 }}
+
+Dict: {{ dict "appLabel" "sandbox app" "custom_dict" (dict "key1" "value1") | toYaml | nindent 2 }}
+{{- end -}}

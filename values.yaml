@@ -1,0 +1,45 @@
+test:
+  description: 'I am a string'
+environment: production
+
+
+
+replicaCount: 2
+
+## adding image, name and tag
+image:
+  name: nginx
+  tag: "1.27.0"
+
+SecurityContext:
+  enabled: true
+  runAsUser: 1000
+  fsGroup: 300
+
+
+## Container-port we are adding http for port 80
+containerPort:
+  http: 80
+
+## For service we will be adding type and Port
+# services:
+#   - type: ClusterIP
+#     port: 80
+#   - type: NodePort
+#     port: 30007
+
+services:
+  svc1:
+    type: ClusterIP
+    port: 80
+  svc2:
+    type: NodePort
+    port: 30007
+
+sandbox:
+  enabled: false
+
+## customName will help users to put values for the resourses
+## if not provided it will take defaul value
+
+customName: 'Arka-res'
