@@ -15,7 +15,6 @@ spec:
                 - name: nginx
                   image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
                   {{-  with .Values.SecurityContext | default dict}}
-                  ## Value of . : {{ . }}
                   {{- if and (hasKey . "enabled") .enabled }}
                   securityContext:
                     runAsUser: {{ .runAsUser }}
